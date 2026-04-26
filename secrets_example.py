@@ -1,7 +1,0 @@
-WIFI_SSID = "YOUR_SSID"
-WIFI_PASSWORD = "YOUR_PASSWORD"
-
-BROKER = "192.168.0.140"
-PORT = 1883
-TOPIC = "genkan/event"
-CLIENT_ID = "picow-doorbell"
