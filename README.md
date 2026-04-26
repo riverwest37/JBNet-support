@@ -16,13 +16,3 @@ Raspberry Pi / Pico W / Node-RED を利用した
 KDP出版版と連携予定
 ``` id="u8m0k8"
 
----
-
-# なぜ少し直すと良いか
-
-今の README でも良いですが、
-
-```text id="top05"
-箇条書き
-見出し
-改行
