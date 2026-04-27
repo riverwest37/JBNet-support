@@ -1,1 +1,5 @@
-
+[Desktop Entry]
+Type=Application
+Name=Garage Monitor
+Exec=/home/pi/garage_monitor/start_garage_monitor.sh
+X-GNOME-Autostart-enabled=true
