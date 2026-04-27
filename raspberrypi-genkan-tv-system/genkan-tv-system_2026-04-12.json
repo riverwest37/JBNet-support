@@ -1,1 +1,273 @@
-
+[
+    {
+        "id": "flow1",
+        "type": "tab",
+        "label": "Genkan",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "in1",
+        "type": "mqtt in",
+        "z": "flow1",
+        "name": "",
+        "topic": "genkan/event",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "mqtt_localhost_broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "json1"
+            ]
+        ]
+    },
+    {
+        "id": "json1",
+        "type": "json",
+        "z": "flow1",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 270,
+        "y": 60,
+        "wires": [
+            [
+                "sw1"
+            ]
+        ]
+    },
+    {
+        "id": "sw1",
+        "type": "switch",
+        "z": "flow1",
+        "name": "doorbell",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "doorbell",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "fn_hdmi",
+                "delay1",
+                "fn_on"
+            ]
+        ]
+    },
+    {
+        "id": "fn_on",
+        "type": "function",
+        "z": "flow1",
+        "name": "TV ON",
+        "func": "msg.payload=\"on\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 120,
+        "wires": [
+            [
+                "exec_on",
+                "ba945d2159e4267b"
+            ]
+        ]
+    },
+    {
+        "id": "exec_on",
+        "type": "exec",
+        "z": "flow1",
+        "command": "echo on 0 | cec-client -s -d 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "exec TV ON",
+        "x": 610,
+        "y": 120,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "fn_hdmi",
+        "type": "function",
+        "z": "flow1",
+        "name": "HDMI",
+        "func": "msg.payload=\"hdmi2\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "exec_hdmi",
+                "877704f7718da60d"
+            ]
+        ]
+    },
+    {
+        "id": "exec_hdmi",
+        "type": "exec",
+        "z": "flow1",
+        "command": "echo as | cec-client -s -d 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "exec HDMI",
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "delay1",
+        "type": "delay",
+        "z": "flow1",
+        "name": "5分",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "fn_off"
+            ]
+        ]
+    },
+    {
+        "id": "fn_off",
+        "type": "function",
+        "z": "flow1",
+        "name": "TV OFF",
+        "func": "msg.payload=\"off\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "exec_off"
+            ]
+        ]
+    },
+    {
+        "id": "exec_off",
+        "type": "exec",
+        "z": "flow1",
+        "command": "echo standby 0 | cec-client -s -d 1",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "exec TV OFF",
+        "x": 590,
+        "y": 300,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ba945d2159e4267b",
+        "type": "debug",
+        "z": "flow1",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "877704f7718da60d",
+        "type": "debug",
+        "z": "flow1",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "mqtt_localhost_broker",
+        "type": "mqtt-broker",
+        "name": "localhost mosquitto",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": ""
+    }
+]
