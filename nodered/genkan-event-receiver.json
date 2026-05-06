@@ -19,10 +19,11 @@
         "rap": false,
         "inputs": 0,
         "x": 90,
-        "y": 60,
+        "y": 100,
         "wires": [
             [
-                "json1"
+                "json1",
+                "a763287fddcde829"
             ]
         ]
     },
@@ -34,11 +35,12 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 270,
-        "y": 60,
+        "x": 250,
+        "y": 100,
         "wires": [
             [
-                "sw1"
+                "sw1",
+                "56a931a7faf9e179"
             ]
         ]
     },
@@ -59,7 +61,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 180,
+        "x": 160,
         "y": 180,
         "wires": [
             [
@@ -81,8 +83,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 120,
+        "x": 330,
+        "y": 180,
         "wires": [
             [
                 "exec_on",
@@ -102,8 +104,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "exec TV ON",
-        "x": 610,
-        "y": 120,
+        "x": 630,
+        "y": 180,
         "wires": [
             [],
             [],
@@ -122,8 +124,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 200,
+        "x": 330,
+        "y": 260,
         "wires": [
             [
                 "exec_hdmi",
@@ -143,8 +145,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "exec HDMI",
-        "x": 610,
-        "y": 200,
+        "x": 630,
+        "y": 260,
         "wires": [
             [],
             [],
@@ -168,8 +170,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 170,
-        "y": 300,
+        "x": 150,
+        "y": 320,
         "wires": [
             [
                 "fn_off"
@@ -183,12 +185,17 @@
         "name": "TV OFF",
         "func": "msg.payload=\"off\";\nreturn msg;",
         "outputs": 1,
+        "timeout": "",
         "noerr": 0,
-        "x": 360,
-        "y": 300,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 320,
         "wires": [
             [
-                "exec_off"
+                "exec_off",
+                "cc07173cb1e0e8c6"
             ]
         ]
     },
@@ -204,8 +211,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "exec TV OFF",
-        "x": 590,
-        "y": 300,
+        "x": 630,
+        "y": 320,
         "wires": [
             [],
             [],
@@ -224,8 +231,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 580,
-        "y": 60,
+        "x": 460,
+        "y": 140,
         "wires": []
     },
     {
@@ -240,8 +247,66 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 240,
+        "x": 460,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a763287fddcde829",
+        "type": "debug",
+        "z": "flow1",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "56a931a7faf9e179",
+        "type": "debug",
+        "z": "flow1",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "cc07173cb1e0e8c6",
+        "type": "debug",
+        "z": "flow1",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c4070ebbd6ead318",
+        "type": "comment",
+        "z": "flow1",
+        "name": "テレビ画面操作",
+        "info": "",
+        "x": 440,
+        "y": 40,
         "wires": []
     },
     {
